@@ -17,8 +17,8 @@ export function ServiceGridSection() {
           <p className="eyebrow">Services</p>
           <h2 className="section-title mt-4">Choose the service that fits your vehicle and your schedule.</h2>
           <p className="copy-muted mt-5">
-            From mobile detailing to oil changes, tire services, and add-ons, everything is laid
-            out clearly so you can see what fits before you book.
+            Mobile detailing, oil changes, tire services, and add-ons laid out clearly so you can
+            choose what fits and book faster.
           </p>
         </div>
         <div className="mt-12 grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">

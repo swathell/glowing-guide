@@ -22,7 +22,7 @@ export function HeroSection() {
             <h1 className="display-title mt-5 max-w-4xl text-obs-fog">
               Premium Mobile Car Detailing Across the GTA
             </h1>
-            <p className="copy-muted mt-6 max-w-2xl">
+            <p className="copy-muted mt-6 max-w-xl">
               Professional interior and exterior detailing delivered directly to your home, condo,
               or office.
             </p>
@@ -34,24 +34,16 @@ export function HeroSection() {
                 Call or Text
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.18em] text-obs-fog/74">
-              <span className="rounded-full border border-white/10 bg-black/20 px-3 py-2">
-                Mobile detailing
-              </span>
-              <span className="rounded-full border border-white/10 bg-black/20 px-3 py-2">
-                Oil changes
-              </span>
-              <span className="rounded-full border border-white/10 bg-black/20 px-3 py-2">
-                Tire services
-              </span>
-              <span className="rounded-full border border-white/10 bg-black/20 px-3 py-2">
-                GTA-wide
-              </span>
+            <div className="mt-8 space-y-3 border-t border-white/10 pt-6">
+              <p className="text-sm uppercase tracking-[0.18em] text-obs-fog/78">
+                Serving Toronto • Mississauga • Vaughan • Brampton • Markham
+              </p>
+              <p className="text-sm uppercase tracking-[0.18em] text-obs-fog/78">
+                Fully Mobile Service • Same-Day Availability • Professional Interior & Exterior
+                Detailing
+              </p>
+              <p className="text-base text-obs-fog/88">★★★★★ Trusted by drivers across the GTA</p>
             </div>
-            <p className="mt-6 max-w-2xl text-sm text-obs-fog/66">
-              Serving drivers across the GTA with professional mobile detailing and convenient
-              at-home service.
-            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 xl:grid-cols-1">
@@ -62,8 +54,8 @@ export function HeroSection() {
             <div className="rounded-2xl border border-white/12 bg-black/22 p-5 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/80">Professional results</p>
               <p className="mt-4 text-sm leading-7 text-obs-fog/78">
-                Interior and exterior packages designed to keep your vehicle clean, fresh, and
-                properly maintained.
+                Interior and exterior detailing done at your location with professional care and
+                clean results.
               </p>
             </div>
             <div className="rounded-2xl border border-white/12 bg-black/22 p-5 backdrop-blur-sm">
