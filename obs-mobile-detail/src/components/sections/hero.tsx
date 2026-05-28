@@ -77,59 +77,6 @@ export function HeroSection() {
           </div>
         </div>
       </Container>
-      <style jsx>{`
-        .hero-image {
-          animation: heroImageDrift 22s ease-in-out infinite alternate;
-        }
-
-        .hero-glow {
-          opacity: 0.75;
-          will-change: transform, opacity;
-          animation: heroGlowFloat 18s ease-in-out infinite alternate;
-        }
-
-        .hero-glow-copper {
-          background: rgba(184, 98, 47, 0.16);
-        }
-
-        .hero-glow-blue {
-          background: rgba(101, 132, 168, 0.12);
-          animation-duration: 24s;
-        }
-
-        .hero-vignette {
-          background:
-            radial-gradient(circle at center, transparent 34%, rgba(6, 8, 10, 0.2) 74%, rgba(6, 8, 10, 0.54) 100%),
-            linear-gradient(180deg, transparent 0%, rgba(6, 8, 10, 0.18) 100%);
-        }
-
-        @keyframes heroGlowFloat {
-          0% {
-            transform: translate3d(0, 0, 0) scale(1);
-            opacity: 0.58;
-          }
-          100% {
-            transform: translate3d(0, -14px, 0) scale(1.08);
-            opacity: 0.82;
-          }
-        }
-
-        @keyframes heroImageDrift {
-          0% {
-            transform: scale(1.2) translate3d(0, 0, 0);
-          }
-          100% {
-            transform: scale(1.24) translate3d(1.2%, -0.6%, 0);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .hero-image,
-          .hero-glow {
-            animation: none;
-          }
-        }
-      `}</style>
     </section>
   );
 }
