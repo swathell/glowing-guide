@@ -1,43 +1,33 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { siteConfig } from "@/lib/site";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-plex-mono",
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: `${siteConfig.name} | Mobile Detailing Across the GTA`,
-    template: `%s | ${siteConfig.name}`
-  },
-  description: siteConfig.description,
-  openGraph: {
-    title: `${siteConfig.name} | Mobile Detailing Across the GTA`,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    locale: "en_CA",
-    type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} | Mobile Detailing Across the GTA`,
-    description: siteConfig.description
-  }
+  title: "Its Ala | Custom Apps, Internal Tools, and AI Workflows",
+  description:
+    "A trust-first software studio for founders and small teams that need custom apps, internal tools, and AI workflows built with speed and clarity.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
-  children: ReactNode;
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+      <body className={`${manrope.variable} ${plexMono.variable}`}>
+        {children}
       </body>
     </html>
   );
