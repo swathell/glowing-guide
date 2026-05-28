@@ -2,7 +2,9 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
-  const socialLinks = "socials" in siteConfig ? siteConfig.socials : [];
+  const socialLinks = Array.isArray((siteConfig as { socials?: unknown }).socials)
+    ? ((siteConfig as { socials?: { label: string; href: string }[] }).socials ?? [])
+    : [];
 
   return (
     <footer className="border-t border-white/8 bg-black/20 py-12">
