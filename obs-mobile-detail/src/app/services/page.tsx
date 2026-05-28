@@ -12,8 +12,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="A premium mobile auto services catalog with detailing still doing the trust-heavy lifting."
-        body="OBS now needs to present detailing, oil changes, tire services, and extras in one coherent structure. This page is the reset point for that architecture."
+        title="Choose the service family fast, then compare packages in a way that actually feels easy."
+        body="Detailing leads with proof and visible results. Oil change and tire service stay practical and quick to scan. Extras stay modular, so the catalog feels premium instead of crowded."
       />
       <ServiceGridSection />
     </>
