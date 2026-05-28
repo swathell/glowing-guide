@@ -2,6 +2,8 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
+  const socialLinks = "socials" in siteConfig ? siteConfig.socials : [];
+
   return (
     <footer className="border-t border-white/8 bg-black/20 py-12">
       <div className="section-shell grid gap-10 md:grid-cols-3">
@@ -31,13 +33,15 @@ export function Footer() {
             <p>{siteConfig.email}</p>
             <p>Serving {siteConfig.areas.join(", ")}</p>
           </div>
-          <div className="mt-5 flex flex-wrap gap-3 text-xs uppercase tracking-[0.16em] text-obs-fog/66">
-            {siteConfig.socials.map((social) => (
-              <a key={social.label} href={social.href} target="_blank" rel="noreferrer">
-                {social.label}
-              </a>
-            ))}
-          </div>
+          {socialLinks.length > 0 ? (
+            <div className="mt-5 flex flex-wrap gap-3 text-xs uppercase tracking-[0.16em] text-obs-fog/66">
+              {socialLinks.map((social) => (
+                <a key={social.label} href={social.href} target="_blank" rel="noreferrer">
+                  {social.label}
+                </a>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </footer>
