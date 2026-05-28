@@ -8,7 +8,11 @@ export function CtaBanner() {
       <Container>
         <div className="rounded-2xl border border-white/10 bg-gradient-to-r from-[#1a1f22] to-[#181513] p-8 md:p-12">
           <p className="eyebrow">Ready To Book</p>
-          <h2 className="section-title mt-4 max-w-3xl">Give the owner a cleaner operation and customers a better first impression.</h2>
+          <h2 className="section-title mt-4 max-w-3xl">Book the clean-up, maintenance, or add-on that fits the vehicle now.</h2>
+          <p className="copy-muted mt-5 max-w-2xl">
+            Standard detailing can move quickly online. Maintenance work and larger jobs still get
+            a clean handoff instead of a confusing dead end.
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/book" className="button-primary">
               Start Booking

@@ -26,10 +26,11 @@ export function GalleryStripSection() {
       <Container>
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="eyebrow">Gallery</p>
-            <h2 className="section-title mt-4">Real detailing proof, staged as a living carousel instead of a dead grid.</h2>
+            <p className="eyebrow">Proof</p>
+            <h2 className="section-title mt-4">Real work should carry more trust than claims, especially on a service this visual.</h2>
             <p className="copy-muted mt-5">
-              Fresh uploads now rotate through the homepage so the work itself carries more of the trust load.
+              Recent interiors, trim resets, and full-detail finishes rotate through the homepage so
+              people can feel the standard before they ever reach the booking form.
             </p>
           </div>
           <Link href="/gallery" className="text-sm font-semibold text-obs-sand md:inline-flex">
@@ -54,7 +55,8 @@ export function GalleryStripSection() {
                   <div>
                     <p className="font-display text-3xl text-obs-fog sm:text-4xl">{activeImage.label}</p>
                     <p className="mt-2 max-w-md text-sm text-obs-fog/78">
-                      Rotating recent work pulled from the current uploaded image set.
+                      The homepage now leads with recent proof so users see finish quality before
+                      they compare packages or decide how to reach out.
                     </p>
                   </div>
                   <div className="hidden gap-2 sm:flex">

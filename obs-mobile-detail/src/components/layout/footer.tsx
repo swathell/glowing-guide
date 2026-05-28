@@ -31,6 +31,13 @@ export function Footer() {
             <p>{siteConfig.email}</p>
             <p>Serving {siteConfig.areas.join(", ")}</p>
           </div>
+          <div className="mt-5 flex flex-wrap gap-3 text-xs uppercase tracking-[0.16em] text-obs-fog/66">
+            {siteConfig.socials.map((social) => (
+              <a key={social.label} href={social.href} target="_blank" rel="noreferrer">
+                {social.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
