@@ -12,24 +12,10 @@ export default function Home() {
     <>
       <HeroSection />
       <section className="border-b border-white/8 bg-black/25 py-5">
-        <Container className="grid gap-4 md:grid-cols-3 md:items-start">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/80">GTA-wide mobile service</p>
-            <p className="mt-2 text-sm leading-6 text-obs-fog/72">
-              Home driveway, condo parking, office lot, or business address across {siteConfig.areas.slice(0, 4).join(", ")} and nearby areas.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/80">Clear booking lanes</p>
-            <p className="mt-2 text-sm leading-6 text-obs-fog/72">
-              Standard jobs move fast. Deposit-required and specialty work stay organized instead of feeling blocked.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/80">Proof-led trust</p>
-            <p className="mt-2 text-sm leading-6 text-obs-fog/72">
-              Real gallery images, service-specific reviews, and short educational reads do more convincing than generic promises.
-            </p>
+        <Container>
+          <div className="flex flex-col gap-3 text-sm uppercase tracking-[0.18em] text-obs-fog/78 md:flex-row md:flex-wrap md:items-center md:justify-between">
+            <p>Serving Toronto • Mississauga • Vaughan • Brampton • Markham</p>
+            <p>Fully Mobile Service • Fast Booking • Professional Results</p>
           </div>
         </Container>
       </section>

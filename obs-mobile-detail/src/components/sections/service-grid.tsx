@@ -15,10 +15,10 @@ export function ServiceGridSection() {
       <Container>
         <div className="max-w-2xl">
           <p className="eyebrow">Services</p>
-          <h2 className="section-title mt-4">Start with the service lane that matches the job, not a cluttered catch-all menu.</h2>
+          <h2 className="section-title mt-4">Choose the service that fits your vehicle and your schedule.</h2>
           <p className="copy-muted mt-5">
-            Detailing stays front and center because it carries the strongest visual payoff. Oil
-            changes, tire work, and extras stay tighter, clearer, and easier to scan.
+            From mobile detailing to oil changes, tire services, and add-ons, everything is laid
+            out clearly so you can see what fits before you book.
           </p>
         </div>
         <div className="mt-12 grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
@@ -100,15 +100,15 @@ export function ServiceGridSection() {
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-black/15 p-5 text-sm leading-7 text-obs-fog/72">
             <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">Detailing</p>
-            <p className="mt-3">The strongest before-and-after category, so it carries the heaviest proof and image weight.</p>
+            <p className="mt-3">Interior and exterior packages for routine upkeep, deep cleaning, and full vehicle refreshes.</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-black/15 p-5 text-sm leading-7 text-obs-fog/72">
             <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">Maintenance</p>
-            <p className="mt-3">Oil and tire services stay cleaner, faster, and more utility-led so people can act without decoding the offer.</p>
+            <p className="mt-3">Oil changes and tire services designed for drivers who want professional work without the shop visit.</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-black/15 p-5 text-sm leading-7 text-obs-fog/72">
             <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">Extras</p>
-            <p className="mt-3">Add-ons stay contextual, so they raise average order value without making the main path feel complicated.</p>
+            <p className="mt-3">Simple add-ons for pet hair, stains, filters, rotations, and other small jobs that make a difference.</p>
           </div>
         </div>
       </Container>
