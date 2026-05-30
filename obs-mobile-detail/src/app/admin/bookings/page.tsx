@@ -48,7 +48,7 @@ export default async function AdminBookingsPage() {
   const { data: bookings, error } = await supabase
     .from("bookings")
     .select(
-      "id, public_reference, status, booking_mode_final, service_city, service_address, service_postal_code, created_at, updated_at, estimated_total_cents, final_total_cents, deposit_required_cents, deposit_paid_cents, preferred_date, preferred_time_slot, requested_date_range_start, requested_date_range_end, vehicle_type, vehicle_make, vehicle_model, vehicle_year, access_notes, notes_customer, notes_internal, customers(first_name,last_name,email,phone), service_packages(name,category_slug), booking_conditions(pet_hair,heavy_stains,odor,mold_or_biohazard,heavy_salt_buildup,heavy_exterior_contamination,custom_scope_requested,interior_condition_level,exterior_condition_level), booking_photos(id,photo_kind), payments(status,payment_type,amount_cents)"
+      "id, public_reference, status, booking_mode_final, service_city, service_address, service_postal_code, location_type, created_at, updated_at, estimated_total_cents, final_total_cents, deposit_required_cents, deposit_paid_cents, preferred_date, preferred_time_slot, requested_date_range_start, requested_date_range_end, vehicle_type, vehicle_make, vehicle_model, vehicle_year, access_notes, notes_customer, notes_internal, customers(first_name,last_name,email,phone), service_packages(name,category_slug), booking_conditions(pet_hair,heavy_stains,odor,mold_or_biohazard,heavy_salt_buildup,heavy_exterior_contamination,custom_scope_requested,interior_condition_level,exterior_condition_level), booking_photos(id,photo_kind), payments(status,payment_type,amount_cents)"
     )
     .order("created_at", { ascending: false })
     .limit(50);
