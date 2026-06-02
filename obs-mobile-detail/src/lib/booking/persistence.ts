@@ -6,11 +6,42 @@ import { ServicePackageRecord } from "@/lib/booking/types";
 
 type SubmitPayload = Awaited<ReturnType<typeof bookingSubmitSchema.parseAsync>>;
 
+async function cleanupPartialBooking(params: {
+  bookingId?: string;
+  customerId?: string;
+}) {
+  const supabase = getSupabaseAdminClient();
+
+  if (params.bookingId) {
+    await supabase.from("bookings").delete().eq("id", params.bookingId);
+  }
+
+  if (params.customerId) {
+    await supabase.from("customers").delete().eq("id", params.customerId);
+  }
+}
+
 export async function persistBooking(
   payload: SubmitPayload & { servicePackage: ServicePackageRecord },
   classification: BookingClassification
 ) {
   const supabase = getSupabaseAdminClient();
+  let customerId: string | undefined;
+  let bookingId: string | undefined;
+
+  const { data: servicePackageRow, error: servicePackageError } = await supabase
+    .from("service_packages")
+    .select("id, slug")
+    .eq("slug", payload.servicePackage.slug)
+    .eq("active", true)
+    .single();
+
+  if (servicePackageError || !servicePackageRow) {
+    throw new Error(
+      servicePackageError?.message ||
+        `Service package ${payload.servicePackage.slug} is not available in the database`
+    );
+  }
 
   const { data: customer, error: customerError } = await supabase
     .from("customers")
@@ -28,6 +59,8 @@ export async function persistBooking(
     throw new Error(customerError?.message || "Failed to create customer");
   }
 
+  customerId = customer.id;
+
   const initialStatus =
     classification.finalMode === "manual_review"
       ? "pending_review"
@@ -40,7 +73,7 @@ export async function persistBooking(
     .insert({
       public_reference: createPublicReference(),
       customer_id: customer.id,
-      service_package_id: payload.servicePackageId,
+      service_package_id: servicePackageRow.id,
       status: initialStatus,
       booking_mode_final: classification.finalMode,
       vehicle_type: payload.vehicle.vehicleType,
@@ -68,8 +101,11 @@ export async function persistBooking(
     .single();
 
   if (bookingError || !booking) {
+    await cleanupPartialBooking({ customerId });
     throw new Error(bookingError?.message || "Failed to create booking");
   }
+
+  bookingId = booking.id;
 
   const { error: conditionError } = await supabase.from("booking_conditions").insert({
     booking_id: booking.id,
@@ -85,6 +121,7 @@ export async function persistBooking(
   });
 
   if (conditionError) {
+    await cleanupPartialBooking({ bookingId, customerId });
     throw new Error(conditionError.message);
   }
 
@@ -101,6 +138,7 @@ export async function persistBooking(
     );
 
     if (photoError) {
+      await cleanupPartialBooking({ bookingId, customerId });
       throw new Error(photoError.message);
     }
   }
@@ -113,11 +151,13 @@ export async function persistBooking(
     event_type: eventType,
     actor_type: "customer",
     payload_json: {
+      finalMode: classification.finalMode,
       reviewReasons: classification.reviewReasons
     }
   });
 
   if (eventError) {
+    await cleanupPartialBooking({ bookingId, customerId });
     throw new Error(eventError.message);
   }
 
