@@ -1,9 +1,8 @@
-import { redirect } from "next/navigation";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 import { AdminBookingActions } from "@/components/admin/admin-booking-actions";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
-import { hasEnvVars } from "@/lib/env-guard";
+import { hasEnvVars, missingEnvVars } from "@/lib/env-guard";
 
 export const dynamic = "force-dynamic";
 
@@ -41,14 +40,37 @@ function prettifyStatus(value?: string | null) {
 
 export default async function AdminBookingsPage() {
   if (!hasEnvVars(["NEXT_PUBLIC_SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"])) {
-    redirect("/book");
+    const missing = missingEnvVars(["NEXT_PUBLIC_SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"]);
+
+    return (
+      <>
+        <PageHero
+          eyebrow="Owner View"
+          title="Admin dashboard setup is incomplete."
+          body="This route is live, but the owner dashboard cannot load until the required Supabase environment variables are added in production."
+        />
+        <section className="py-20 md:py-28">
+          <Container>
+            <div className="rounded-3xl border border-amber-500/30 bg-amber-500/10 p-6 text-obs-fog">
+              <p className="text-sm uppercase tracking-[0.18em] text-amber-100/80">Setup required</p>
+              <p className="mt-4 text-lg text-obs-fog">
+                Missing environment variables: {missing.join(", ")}
+              </p>
+              <p className="mt-4 text-sm leading-7 text-obs-fog/74">
+                Add these in Vercel, redeploy, and then reopen <span className="text-obs-fog">/admin/bookings</span>.
+              </p>
+            </div>
+          </Container>
+        </section>
+      </>
+    );
   }
 
   const supabase = getSupabaseAdminClient();
   const { data: bookings, error } = await supabase
     .from("bookings")
     .select(
-      "id, public_reference, status, booking_mode_final, service_city, service_address, service_postal_code, location_type, created_at, updated_at, estimated_total_cents, final_total_cents, deposit_required_cents, deposit_paid_cents, preferred_date, preferred_time_slot, requested_date_range_start, requested_date_range_end, vehicle_type, vehicle_make, vehicle_model, vehicle_year, access_notes, notes_customer, notes_internal, customers(first_name,last_name,email,phone), service_packages(name,category_slug), booking_conditions(pet_hair,heavy_stains,odor,mold_or_biohazard,heavy_salt_buildup,heavy_exterior_contamination,custom_scope_requested,interior_condition_level,exterior_condition_level), booking_photos(id,photo_kind), payments(status,payment_type,amount_cents)"
+      "id, public_reference, status, booking_mode_final, service_city, service_address, service_postal_code, location_type, created_at, updated_at, estimated_total_cents, final_total_cents, deposit_required_cents, deposit_paid_cents, preferred_date, preferred_time_slot, requested_date_range_start, requested_date_range_end, vehicle_type, vehicle_make, vehicle_model, vehicle_year, access_notes, notes_customer, notes_internal, customers(first_name,last_name,email,phone), service_packages(name,category_slug)"
     )
     .order("created_at", { ascending: false })
     .limit(50);
@@ -163,24 +185,10 @@ export default async function AdminBookingsPage() {
               const servicePackage = Array.isArray(booking.service_packages)
                 ? booking.service_packages[0]
                 : booking.service_packages;
-              const condition = Array.isArray(booking.booking_conditions)
-                ? booking.booking_conditions[0]
-                : booking.booking_conditions;
-              const photos = Array.isArray(booking.booking_photos) ? booking.booking_photos : [];
-              const payments = Array.isArray(booking.payments) ? booking.payments : [];
               const outstandingDeposit = Math.max(
                 (booking.deposit_required_cents || 0) - (booking.deposit_paid_cents || 0),
                 0
               );
-              const conditionFlags = [
-                condition?.pet_hair ? "pet hair" : null,
-                condition?.heavy_stains ? "heavy stains" : null,
-                condition?.odor ? "odor" : null,
-                condition?.mold_or_biohazard ? "biohazard" : null,
-                condition?.heavy_salt_buildup ? "salt buildup" : null,
-                condition?.heavy_exterior_contamination ? "exterior contamination" : null,
-                condition?.custom_scope_requested ? "custom scope" : null
-              ].filter(Boolean);
 
               return (
                 <article key={booking.id} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
@@ -257,30 +265,20 @@ export default async function AdminBookingsPage() {
                           <p className="text-xs uppercase tracking-[0.16em] text-obs-sand/76">Job flags</p>
                           <div className="mt-3 flex flex-wrap gap-2">
                             <span className="rounded-full border border-white/8 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-obs-fog/72">
-                              {photos.length} photos
+                              {booking.booking_mode_final === "manual_review"
+                                ? "Review job"
+                                : booking.booking_mode_final === "deposit_required"
+                                  ? "Deposit flow"
+                                  : "Direct booking"}
                             </span>
-                            {payments.length ? (
-                              payments.map((payment, index) => (
-                                <span
-                                  key={`${payment.payment_type}-${index}`}
-                                  className="rounded-full border border-white/8 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-obs-fog/72"
-                                >
-                                  {payment.payment_type} {payment.status}
-                                </span>
-                              ))
-                            ) : (
+                            <span className="rounded-full border border-white/8 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-obs-fog/72">
+                              Created {formatDate(booking.created_at)}
+                            </span>
+                            {booking.deposit_required_cents && booking.deposit_required_cents > 0 ? (
                               <span className="rounded-full border border-white/8 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-obs-fog/72">
-                                No payment row
+                                Deposit due
                               </span>
-                            )}
-                            {conditionFlags.map((flag) => (
-                              <span
-                                key={flag}
-                                className="rounded-full border border-amber-500/25 bg-amber-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-amber-100"
-                              >
-                                {flag}
-                              </span>
-                            ))}
+                            ) : null}
                           </div>
                           {booking.access_notes ? (
                             <p className="mt-4 text-sm leading-6 text-obs-fog/72">
