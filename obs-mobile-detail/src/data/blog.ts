@@ -30,9 +30,8 @@ export const blogPosts: BlogPost[] = [
       "Not sure what mobile detailing includes, how long it takes, or whether it works at your home or office? This guide explains what GTA drivers can expect and when mobile service makes the most sense.",
     excerpt:
       "Mobile detailing works best when you want professional results without losing half a day at a shop. Here’s what the service includes, where it works best, and how to choose the right package.",
-    coverImage: "/images/gallery/hero-detailing.png",
+    coverImage: "/images/blog/mobile-detailing-guide-cropped.png",
     coverAlt: "OBS mobile detailing setup beside a freshly detailed vehicle",
-    imagePosition: "50% 78%",
     featured: true,
     content: [
       {
