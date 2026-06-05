@@ -73,7 +73,7 @@ export function TestimonialsSection() {
                 {blogPosts.slice(0, 2).map((post) => (
                   <Link
                     key={post.slug}
-                    href="/blog"
+                    href={`/blog/${post.slug}`}
                     className="block rounded-2xl border border-white/8 bg-black/15 p-5 transition hover:bg-black/25"
                   >
                     <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/76">{post.category}</p>
