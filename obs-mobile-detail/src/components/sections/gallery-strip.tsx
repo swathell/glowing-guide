@@ -26,11 +26,14 @@ export function GalleryStripSection() {
       <Container>
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="eyebrow">Proof</p>
-            <h2 className="section-title mt-4">Real work should carry more trust than claims, especially on a service this visual.</h2>
+            <div className="flex flex-wrap gap-3">
+              <span className="obs-tag">Proof</span>
+              <span className="obs-tag">Real transformations</span>
+            </div>
+            <h2 className="section-title mt-6">The finish has to look worth booking before anyone reads the package list.</h2>
             <p className="copy-muted mt-5">
-              Recent interiors, trim resets, and full-detail finishes rotate through the homepage so
-              people can feel the standard before they ever reach the booking form.
+              Recent interiors, paint finishes, and full-vehicle cleanups carry the trust here.
+              The point is simple: the vehicle should look visibly better, not just freshly wiped.
             </p>
           </div>
           <Link href="/gallery" className="text-sm font-semibold text-obs-sand md:inline-flex">
@@ -39,7 +42,7 @@ export function GalleryStripSection() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+          <div className="obs-panel obs-performance-line relative overflow-hidden rounded-2xl pt-3">
             <div className="relative min-h-[24rem] sm:min-h-[30rem]">
               <Image
                 key={activeImage.src}

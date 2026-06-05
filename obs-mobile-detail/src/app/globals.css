@@ -65,6 +65,67 @@ body {
   @apply grid gap-8 lg:grid-cols-[1.15fr_0.85fr];
 }
 
+.obs-panel {
+  border: 1px solid rgba(244, 241, 235, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)),
+    linear-gradient(135deg, rgba(184, 98, 47, 0.12), rgba(10, 12, 14, 0) 36%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.obs-panel-dark {
+  border: 1px solid rgba(244, 241, 235, 0.1);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.3)),
+    linear-gradient(135deg, rgba(184, 98, 47, 0.16), rgba(10, 12, 14, 0) 42%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.obs-performance-line {
+  position: relative;
+}
+
+.obs-performance-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  width: 7rem;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(184, 98, 47, 1), rgba(231, 186, 69, 0.18));
+}
+
+.obs-angle-grid {
+  background-image:
+    linear-gradient(120deg, rgba(184, 98, 47, 0.12), transparent 22%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02));
+}
+
+.obs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 241, 235, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.55rem 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 235, 0.78);
+}
+
+.obs-tag::before {
+  content: "";
+  height: 0.42rem;
+  width: 0.42rem;
+  border-radius: 999px;
+  background: #b8622f;
+  box-shadow: 0 0 14px rgba(184, 98, 47, 0.5);
+}
+
 .hero-image {
   animation: heroImageDrift 22s ease-in-out infinite alternate;
 }

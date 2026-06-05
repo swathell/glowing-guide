@@ -24,13 +24,16 @@ export function HeroSection() {
       <Container className="relative grid min-h-[calc(100svh-4rem)] items-end py-16 md:py-24 xl:py-28">
         <div className="grid gap-12 xl:grid-cols-[1.08fr_0.92fr] xl:items-end">
           <div className="max-w-3xl pb-2">
-            <p className="eyebrow">Mobile detailing across the GTA</p>
-            <h1 className="mt-5 max-w-5xl font-display text-5xl leading-[0.9] text-obs-fog [text-wrap:balance] md:text-7xl xl:text-[6.2rem]">
-              Premium Mobile Car Detailing Across the GTA
+            <div className="flex flex-wrap gap-3">
+              <span className="obs-tag">Mobile detailing across the GTA</span>
+              <span className="obs-tag">Interior • Exterior • Full Reset</span>
+            </div>
+            <h1 className="mt-6 max-w-5xl font-display text-5xl leading-[0.88] text-obs-fog [text-wrap:balance] md:text-7xl xl:text-[6.4rem]">
+              Premium mobile detailing with real transformation built in.
             </h1>
-            <p className="copy-muted mt-8 max-w-md text-[1.03rem] leading-7 md:text-[1.18rem]">
-              Professional interior and exterior detailing delivered directly to your home, condo,
-              or office.
+            <p className="copy-muted mt-8 max-w-xl text-[1.03rem] leading-7 md:text-[1.18rem]">
+              OBS brings interior resets, exterior restoration, and full-vehicle care directly to
+              your home, condo, office, or business across the GTA.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/book" className="button-primary">
@@ -53,20 +56,20 @@ export function HeroSection() {
           </div>
 
           <div className="grid gap-4 self-end sm:grid-cols-3 xl:grid-cols-1">
-            <div className="rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(0,0,0,0.24),rgba(0,0,0,0.34))] p-5 backdrop-blur-md">
-              <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/84">Mobile service</p>
+            <div className="obs-panel-dark obs-performance-line rounded-[1.4rem] p-5 pt-8 backdrop-blur-md">
+              <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/84">Transformation first</p>
               <p className="mt-4 font-display text-[2rem] leading-tight text-obs-fog">
-                We come to your home, condo, office, or business.
+                Built for dull paint, tired interiors, and vehicles that need to feel sharp again.
               </p>
             </div>
-            <div className="rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.3))] p-5 backdrop-blur-md">
-              <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/84">Professional results</p>
+            <div className="obs-panel-dark rounded-[1.4rem] p-5 backdrop-blur-md">
+              <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/84">Mobile service</p>
               <p className="mt-4 text-sm leading-7 text-obs-fog/80">
-                Interior and exterior detailing done at your location with professional care and
-                clean results.
+                We come to your home, condo, office, or business with a service flow built to feel
+                quick, professional, and easy to trust.
               </p>
             </div>
-            <div className="rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.3))] p-5 backdrop-blur-md">
+            <div className="obs-panel-dark rounded-[1.4rem] p-5 backdrop-blur-md">
               <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/84">Fast booking</p>
               <div className="mt-4 space-y-3 text-sm text-obs-fog/80">
                 <p>Choose your package.</p>

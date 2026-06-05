@@ -24,10 +24,14 @@ export default function ReviewsPage() {
 
   return (
     <>
-      <section className="border-b border-white/8 py-20 md:py-28">
+      <section className="relative border-b border-white/8 py-20 md:py-28">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_top_left,rgba(184,98,47,0.18),transparent_55%)]" />
         <Container>
           <div className="max-w-3xl">
-            <p className="eyebrow">Reviews</p>
+            <div className="flex flex-wrap gap-3">
+              <span className="obs-tag">Reviews</span>
+              <span className="obs-tag">Proof from GTA drivers</span>
+            </div>
             <h1 className="display-title mt-4 text-obs-fog">Trusted By Drivers Across The GTA</h1>
             <p className="copy-muted mt-6 max-w-2xl">
               See what customers have to say about our mobile detailing services across Toronto
@@ -41,7 +45,7 @@ export default function ReviewsPage() {
         <Container>
           <div className="grid gap-4 md:grid-cols-4">
             {reviewStats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div key={stat.label} className="obs-panel rounded-2xl p-5">
                 <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">{stat.label}</p>
                 <p className="mt-3 text-lg text-obs-fog">{stat.value}</p>
               </div>
@@ -52,7 +56,7 @@ export default function ReviewsPage() {
 
       <section className="pb-12 md:pb-16">
         <Container>
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
+          <div className="obs-panel obs-performance-line overflow-hidden rounded-[2rem] pt-3">
             <div className="grid gap-8 p-7 md:p-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
               <div>
                 <p className="eyebrow">Featured Review</p>
@@ -94,7 +98,7 @@ export default function ReviewsPage() {
             {topReviews.map((review) => (
               <article
                 key={`${review.name}-${review.service}`}
-                className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+                className="obs-panel rounded-[1.75rem] p-6"
               >
                 <p className="text-sm text-[#e7ba45]">★★★★★</p>
                 <h3 className="mt-5 font-display text-3xl text-obs-fog">{review.name}</h3>
@@ -115,7 +119,7 @@ export default function ReviewsPage() {
             {lowerReviews.map((review) => (
               <article
                 key={`${review.name}-${review.service}-${review.location}`}
-                className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-5"
+                className="obs-panel rounded-[1.5rem] p-5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>

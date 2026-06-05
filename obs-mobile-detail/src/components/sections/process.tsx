@@ -24,12 +24,15 @@ export function ProcessSection() {
     <section className="border-y border-white/8 bg-black/15 py-20 md:py-28">
       <Container>
         <div className="max-w-2xl">
-          <p className="eyebrow">How It Works</p>
-          <h2 className="section-title mt-4">The booking path should feel calm for normal jobs and controlled for bigger ones.</h2>
+          <div className="flex flex-wrap gap-3">
+            <span className="obs-tag">How it works</span>
+            <span className="obs-tag">Fast to book, easy to trust</span>
+          </div>
+          <h2 className="section-title mt-6">A professional service flow should feel fast, clear, and easy to trust.</h2>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {steps.map((step, index) => (
-            <div key={step.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <div key={step.title} className="obs-panel rounded-2xl p-6">
               <p className="text-sm uppercase tracking-[0.2em] text-obs-sand/80">0{index + 1}</p>
               <h3 className="mt-5 text-xl font-semibold text-obs-fog">{step.title}</h3>
               <p className="mt-3 text-sm leading-7 text-obs-fog/72">{step.body}</p>
