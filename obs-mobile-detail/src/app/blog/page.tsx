@@ -62,6 +62,9 @@ export default function BlogPage() {
                     alt={featuredBlogPost.coverAlt}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                    style={{
+                      objectPosition: featuredBlogPost.imagePosition ?? "50% 50%"
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/78 via-black/28 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
@@ -130,6 +133,7 @@ export default function BlogPage() {
                       alt={post.coverAlt}
                       fill
                       className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                      style={{ objectPosition: post.imagePosition ?? "50% 50%" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/15 to-transparent" />
                   </div>

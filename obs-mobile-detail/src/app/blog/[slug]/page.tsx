@@ -60,7 +60,13 @@ export default async function BlogPostPage({
               <p className="copy-muted mt-6 max-w-2xl">{post.summary}</p>
             </div>
             <div className="relative min-h-[18rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] lg:min-h-[26rem]">
-              <Image src={post.coverImage} alt={post.coverAlt} fill className="object-cover" />
+              <Image
+                src={post.coverImage}
+                alt={post.coverAlt}
+                fill
+                className="object-cover"
+                style={{ objectPosition: post.imagePosition ?? "50% 50%" }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
             </div>
           </div>

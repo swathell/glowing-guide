@@ -14,6 +14,7 @@ export type BlogPost = {
   excerpt: string;
   coverImage: string;
   coverAlt: string;
+  imagePosition?: string;
   featured?: boolean;
   content: BlogSection[];
 };
@@ -31,6 +32,7 @@ export const blogPosts: BlogPost[] = [
       "Mobile detailing works best when you want professional results without losing half a day at a shop. Here’s what the service includes, where it works best, and how to choose the right package.",
     coverImage: "/images/gallery/hero-detailing.png",
     coverAlt: "OBS mobile detailing setup beside a freshly detailed vehicle",
+    imagePosition: "50% 78%",
     featured: true,
     content: [
       {
