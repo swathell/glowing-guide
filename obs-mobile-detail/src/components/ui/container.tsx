@@ -1,10 +1,12 @@
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
-type ContainerProps = {
+export function Container({
+  children,
+  className
+}: {
   children: ReactNode;
   className?: string;
-};
-
-export function Container({ children, className = "" }: ContainerProps) {
-  return <div className={`mx-auto w-full max-w-content px-5 sm:px-8 ${className}`}>{children}</div>;
+}) {
+  return <div className={cn("section-shell", className)}>{children}</div>;
 }
