@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
 import { FaqListSection } from "@/components/sections/faq-list";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "Answers around service areas, booking, deposits, vehicle size rules, and weather scheduling."
+  description: "Searchable answers about booking, pricing, service areas, deposits, and what to expect from mobile detailing."
 };
 
 export default function FaqPage() {
   return (
     <>
-      <PageHero
-        eyebrow="FAQ"
-        title="Clear answers around booking, size rules, deposits, and service expectations."
-        body="The page is structured for grouped FAQ content now and schema expansion later."
-      />
-      <section className="py-20 md:py-28">
+      <section className="border-b border-white/8 py-20 md:py-28">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="eyebrow">Frequently Asked Questions</p>
+            <h1 className="display-title mt-4 text-obs-fog">Have Questions?</h1>
+            <p className="copy-muted mt-6 max-w-2xl">
+              Get quick answers about pricing, service areas, booking, and what to expect
+              before your appointment.
+            </p>
+          </div>
+        </Container>
+      </section>
+      <section className="py-16 md:py-24">
         <Container>
           <FaqListSection />
         </Container>
