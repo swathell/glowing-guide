@@ -1,208 +1,104 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/sections/page-hero";
+import { SiteShell } from "@/components/site/site-shell";
 import { Container } from "@/components/ui/container";
-import { featuredBlogPost, latestBlogPosts } from "@/data/blog";
-import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Car care advice, detailing tips, and seasonal mobile service guides from OBS Mobile Detailing."
-};
+const posts = [
+  {
+    title: "The complete guide to mobile detailing in the GTA",
+    date: "May 30, 2026",
+    category: "Guide",
+    image: "/images/obs-products-driveway.png",
+    body:
+      "How driveway access, vehicle size, salt buildup, and package scope affect what a mobile detail actually needs on arrival."
+  },
+  {
+    title: "Paint protection is not one decision",
+    date: "May 22, 2026",
+    category: "Protection",
+    image: "/images/obs-foam-wash.png",
+    body:
+      "A practical breakdown of wash prep, surface inspection, sealants, and when a deeper correction conversation makes sense."
+  },
+  {
+    title: "Interior resets for family vehicles",
+    date: "May 12, 2026",
+    category: "Interior",
+    image: "/images/obs-hand-wipe.png",
+    body:
+      "What separates a light refresh from a true reset when crumbs, pet hair, stains, and winter debris have built up over time."
+  }
+];
 
 export default function BlogPage() {
-  const imageLedPosts = latestBlogPosts.slice(0, 2);
-  const textPosts = latestBlogPosts.slice(2);
-
   return (
-    <>
-      <PageHero
-        eyebrow="Insights & Guides"
-        title="Car Care Advice, Detailing Tips & Seasonal Service Guides"
-        body="Learn how to protect your vehicle, extend its finish, and make smarter detailing decisions throughout the year."
-        actions={
-          <>
-            <Link href={`/blog/${featuredBlogPost.slug}`} className="button-primary">
-              Read Featured Guide
-            </Link>
-            <Link href="/book" className="button-secondary">
-              Book Mobile Detailing
-            </Link>
-          </>
-        }
-      />
-
-      <section className="relative overflow-hidden py-20 md:py-28">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top_left,rgba(184,98,47,0.18),transparent_62%)]" />
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.55fr_1.45fr]">
-            <div className="max-w-md">
-              <p className="eyebrow">Why We Write</p>
-              <h2 className="section-title mt-4">Better vehicle care starts with better information.</h2>
-              <p className="copy-muted mt-5">
-                From ceramic coatings and interior protection to seasonal maintenance and
-                mobile service tips, our guides help GTA drivers understand what works, what
-                doesn&apos;t, and when professional detailing makes the biggest difference.
-              </p>
-              <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6">
-                <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/82">Serving</p>
-                <p className="mt-4 text-sm leading-7 text-obs-fog/74">
-                  Toronto, Mississauga, Vaughan, Brampton, Markham, Richmond Hill, Oakville,
-                  North York, and Scarborough.
-                </p>
-              </div>
-            </div>
-
-            <article className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03]">
-              <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-                <div className="relative min-h-[20rem] overflow-hidden">
-                  <Image
-                    src={featuredBlogPost.coverImage}
-                    alt={featuredBlogPost.coverAlt}
-                    fill
-                    className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                    style={{
-                      objectPosition: featuredBlogPost.imagePosition ?? "50% 50%"
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/78 via-black/28 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                    <p className="text-xs uppercase tracking-[0.22em] text-obs-sand/85">
-                      Featured Guide
-                    </p>
-                    <p className="mt-3 text-sm uppercase tracking-[0.16em] text-obs-fog/70">
-                      {featuredBlogPost.category} • {featuredBlogPost.readTime}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col justify-between p-6 md:p-8">
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.18em] text-obs-sand/78">
-                      {featuredBlogPost.date}
-                    </p>
-                    <h2 className="mt-4 font-display text-4xl leading-tight text-obs-fog md:text-5xl">
-                      {featuredBlogPost.title}
-                    </h2>
-                    <p className="mt-5 max-w-xl text-base leading-8 text-obs-fog/74 md:text-lg">
-                      {featuredBlogPost.summary}
-                    </p>
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <Link
-                      href={`/blog/${featuredBlogPost.slug}`}
-                      className="inline-flex items-center text-sm font-semibold text-obs-sand transition hover:text-obs-fog"
-                    >
-                      Continue Reading
-                    </Link>
-                    <span className="text-xs uppercase tracking-[0.18em] text-obs-fog/48">
-                      Useful for first-time detail bookings and package selection
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </article>
+    <SiteShell>
+      <section className="border-b border-obs-line bg-obs-fog text-obs-ink">
+        <Container className="grid min-h-[calc(100svh-5rem)] items-stretch gap-10 py-12 lg:grid-cols-[0.56fr_0.44fr]">
+          <div className="flex flex-col justify-center py-8">
+            <p className="mb-5 border-l-4 border-obs-copper pl-4 text-sm font-bold uppercase text-obs-copper">
+              Shop notes
+            </p>
+            <h1 className="font-display text-5xl leading-[0.98] md:text-7xl">
+              Better vehicle care starts with better information.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-obs-muted">
+              Straightforward guidance for choosing packages, understanding vehicle condition, and keeping a clean car
+              easier to maintain between appointments.
+            </p>
           </div>
+          <article className="relative min-h-[31rem] overflow-hidden bg-obs-ink text-obs-fog">
+            <Image src="/images/obs-products-driveway.png" alt="" fill priority className="object-cover" sizes="50vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-obs-ink via-obs-ink/58 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
+              <p className="text-sm uppercase text-obs-copper">Featured field note</p>
+              <h2 className="mt-4 font-display text-4xl">Mobile work has a different checklist.</h2>
+              <p className="mt-4 leading-7 text-obs-sand">
+                A clean appointment depends on access, prep, equipment, weather, and the honesty of the vehicle
+                condition notes.
+              </p>
+            </div>
+          </article>
         </Container>
       </section>
 
-      <section className="pb-20 md:pb-28">
+      <section className="py-16 md:py-24">
         <Container>
-          <div className="mb-8 flex items-end justify-between gap-6">
+          <div className="mb-10 flex flex-col justify-between gap-5 border-b border-obs-line pb-7 md:flex-row md:items-end">
             <div>
-              <p className="eyebrow">Latest Articles</p>
-              <h2 className="section-title mt-4">Real answers to the questions drivers ask before they book.</h2>
+              <p className="text-sm uppercase text-obs-copper">Latest reads</p>
+              <h2 className="mt-3 font-display text-4xl text-obs-fog">Practical notes from the detail bay.</h2>
             </div>
-            <Link href="/contact" className="hidden text-sm font-semibold text-obs-sand md:inline-flex">
-              Need help choosing a service?
-            </Link>
+            <p className="max-w-md leading-7 text-obs-sand">
+              Field-tested advice on package choice, condition, protection, maintenance, and timing.
+            </p>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-2">
-            {imageLedPosts.map((post) => (
-              <article
-                key={post.slug}
-                className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.03] transition hover:-translate-y-1 hover:border-white/20"
-              >
-                <Link href={`/blog/${post.slug}`} className="block">
-                  <div className="relative min-h-[16rem] overflow-hidden">
-                    <Image
-                      src={post.coverImage}
-                      alt={post.coverAlt}
-                      fill
-                      className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                      style={{ objectPosition: post.imagePosition ?? "50% 50%" }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/15 to-transparent" />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em]">
-                      <span className="text-obs-sand/80">{post.category}</span>
-                      <span className="text-obs-fog/45">{post.readTime}</span>
-                    </div>
-                    <h3 className="mt-4 font-display text-3xl leading-tight text-obs-fog transition group-hover:text-white">
-                      {post.title}
-                    </h3>
-                    <p className="mt-4 text-sm uppercase tracking-[0.16em] text-obs-fog/50">{post.date}</p>
-                    <p className="mt-4 text-sm leading-7 text-obs-fog/74">{post.summary}</p>
-                    <span className="mt-5 inline-flex text-sm font-semibold text-obs-sand">
-                      Read Article
-                    </span>
-                  </div>
-                </Link>
-              </article>
-            ))}
-
-            {textPosts.map((post) => (
-              <article
-                key={post.slug}
-                className="group rounded-[1.75rem] border border-white/10 bg-white/[0.02] p-6 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.04]"
-              >
-                <Link href={`/blog/${post.slug}`} className="block">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em]">
-                    <span className="text-obs-sand/80">{post.category}</span>
-                    <span className="text-obs-fog/45">{post.readTime}</span>
-                  </div>
-                  <h3 className="mt-4 font-display text-3xl leading-tight text-obs-fog transition group-hover:text-white">
-                    {post.title}
-                  </h3>
-                  <p className="mt-3 text-sm uppercase tracking-[0.16em] text-obs-fog/50">{post.date}</p>
-                  <p className="mt-4 text-sm leading-7 text-obs-fog/74">{post.summary}</p>
-                  <span className="mt-5 inline-flex text-sm font-semibold text-obs-sand">
-                    Learn More
+          <div className="divide-y divide-obs-line border-b border-obs-line">
+            {posts.map((post, index) => (
+              <article key={post.title} className="grid gap-6 py-8 md:grid-cols-[8rem_1fr_15rem] md:items-center">
+                <div className="text-sm text-obs-sand">
+                  <p className="text-obs-copper">{post.category}</p>
+                  <p className="mt-2">{post.date}</p>
+                </div>
+                <div>
+                  <h3 className="font-display text-3xl text-obs-fog">{post.title}</h3>
+                  <p className="mt-3 max-w-2xl leading-7 text-obs-sand">{post.body}</p>
+                  <Link href="/blog" className="mt-5 inline-block text-sm font-bold uppercase text-obs-copper">
+                    Read note
+                  </Link>
+                </div>
+                <div className="relative h-44 overflow-hidden md:h-36">
+                  <Image src={post.image} alt="" fill className="object-cover" sizes="240px" />
+                  <span className="absolute left-3 top-3 grid h-9 w-9 place-items-center bg-obs-copper text-sm font-bold text-obs-fog">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                </Link>
+                </div>
               </article>
             ))}
           </div>
         </Container>
       </section>
-
-      <section className="border-t border-white/8 py-16">
-        <Container>
-          <div className="flex flex-col gap-6 rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <p className="eyebrow">Need Help Choosing a Service?</p>
-              <h2 className="mt-4 font-display text-3xl text-obs-fog md:text-4xl">
-                Not sure whether your vehicle needs a maintenance detail, interior reset, ceramic coating, or something more involved?
-              </h2>
-              <p className="mt-4 text-sm leading-7 text-obs-fog/72">
-                Call us at {siteConfig.phone} or book online and we&apos;ll point you in the right direction.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a href={`tel:${siteConfig.phone}`} className="button-secondary">
-                Call Us
-              </a>
-              <Link href="/book" className="button-primary">
-                Book Now
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
-    </>
+    </SiteShell>
   );
 }
