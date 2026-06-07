@@ -1,0 +1,124 @@
+import Link from "next/link";
+import { serviceCategories } from "@/data/services";
+import { Container } from "@/components/ui/container";
+
+export function ServiceGridSection() {
+  const detailing = serviceCategories.find((category) => category.slug === "detailing");
+  const supportCategories = serviceCategories.filter((category) => category.slug !== "detailing");
+
+  if (!detailing) {
+    return null;
+  }
+
+  return (
+    <section className="py-20 md:py-28">
+      <Container>
+        <div className="max-w-3xl">
+          <div className="flex flex-wrap gap-3">
+            <span className="obs-tag">Built around real vehicle condition</span>
+            <span className="obs-tag">From maintenance to full restoration</span>
+          </div>
+          <h2 className="section-title mt-6">Choose the service that matches how your vehicle actually looks today.</h2>
+          <p className="copy-muted mt-5">
+            Detailing leads with the strongest visual payoff. Maintenance stays practical and fast.
+            Add-ons stay targeted so the whole service catalog feels sharp instead of crowded.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
+          <article className="obs-panel obs-performance-line overflow-hidden rounded-3xl pt-3">
+            <div className="grid gap-0 lg:grid-cols-[0.92fr_1.08fr]">
+              <div className="obs-angle-grid border-b border-white/8 bg-black/15 p-8 lg:border-b-0 lg:border-r">
+                <p className="text-sm uppercase tracking-[0.2em] text-obs-sand/80">{detailing.eyebrow}</p>
+                <h3 className="mt-4 font-display text-4xl text-obs-fog sm:text-5xl">{detailing.name}</h3>
+                <p className="mt-4 text-sm uppercase tracking-[0.16em] text-obs-fog/55">
+                  From {detailing.priceFrom}
+                </p>
+                <p className="mt-5 text-sm leading-7 text-obs-fog/74">{detailing.intro}</p>
+                <p className="mt-6 border-l-2 border-obs-copper pl-4 text-sm leading-7 text-obs-fog/88">
+                  {detailing.highlight}
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+                  <Link href="/book" className="button-primary">
+                    Book detailing
+                  </Link>
+                  <Link href={`/services/${detailing.slug}`} className="button-secondary">
+                    View packages
+                  </Link>
+                </div>
+              </div>
+              <div className="grid gap-0 divide-y divide-white/8">
+                {detailing.groups.flatMap((group) => group.packages).slice(0, 5).map((pkg) => (
+                  <div key={pkg.name} className="grid gap-2 px-8 py-5 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-6">
+                    <div>
+                      <p className="text-lg font-semibold text-obs-fog">{pkg.name}</p>
+                      <p className="mt-2 text-sm leading-6 text-obs-fog/72">{pkg.summary}</p>
+                    </div>
+                    <p className="whitespace-nowrap text-sm font-semibold uppercase tracking-[0.16em] text-obs-sand">
+                      {pkg.price}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <div className="grid gap-5">
+            {supportCategories.map((category) => (
+              <article
+                key={category.slug}
+                className="obs-panel rounded-3xl p-7 transition hover:-translate-y-1 hover:bg-white/[0.045]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.2em] text-obs-sand/80">
+                      {category.eyebrow}
+                    </p>
+                    <h3 className="mt-4 font-display text-3xl text-obs-fog">{category.name}</h3>
+                  </div>
+                  <p className="text-sm uppercase tracking-[0.16em] text-obs-fog/55">
+                    From {category.priceFrom}
+                  </p>
+                </div>
+                <p className="mt-5 border-l-2 border-obs-copper pl-4 text-sm leading-7 text-obs-fog/74">
+                  {category.highlight}
+                </p>
+                <ul className="mt-6 space-y-3 text-sm text-obs-fog/82">
+                  {category.groups[0].packages.slice(0, 3).map((pkg) => (
+                    <li key={pkg.name} className="flex items-start justify-between gap-4 border-t border-white/8 pt-3">
+                      <span>{pkg.name}</span>
+                      <span className="whitespace-nowrap text-obs-sand">{pkg.price}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/8 pt-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-obs-fog/55">
+                    {category.availability === "call-to-schedule"
+                      ? "Call to schedule"
+                      : "Best added to a main service"}
+                  </p>
+                  <Link href={`/services/${category.slug}`} className="inline-flex text-sm font-semibold text-obs-sand">
+                    Explore service
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="obs-panel rounded-2xl p-5 text-sm leading-7 text-obs-fog/72">
+            <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">Detailing</p>
+            <p className="mt-3">Interior and exterior packages for routine upkeep, deep cleaning, and full vehicle refreshes.</p>
+          </div>
+          <div className="obs-panel rounded-2xl p-5 text-sm leading-7 text-obs-fog/72">
+            <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">Maintenance</p>
+            <p className="mt-3">Oil changes and tire services designed for drivers who want professional work without the shop visit.</p>
+          </div>
+          <div className="obs-panel rounded-2xl p-5 text-sm leading-7 text-obs-fog/72">
+            <p className="text-xs uppercase tracking-[0.18em] text-obs-sand/80">Extras</p>
+            <p className="mt-3">Simple add-ons for pet hair, stains, filters, rotations, and other small jobs that make a difference.</p>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
