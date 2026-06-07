@@ -11,13 +11,13 @@ export function TestimonialsSection() {
         <div className="grid gap-10 xl:grid-cols-[0.95fr_1.05fr]">
           <div className="max-w-2xl">
             <div className="flex flex-wrap gap-3">
-              <span className="obs-tag">Proof</span>
-              <span className="obs-tag">Real customer experiences</span>
+              <span className="obs-tag">Customer proof</span>
+              <span className="obs-tag">Service-specific reviews</span>
             </div>
-            <h2 className="section-title mt-6">The trust comes from seeing the work and hearing what the experience was actually like.</h2>
+            <h2 className="section-title mt-6">Reviews should make the operation feel real.</h2>
             <p className="copy-muted mt-5">
-              Drivers are not just looking for a clean car. They want to know you show up on time,
-              work carefully, and leave the vehicle looking noticeably better than before.
+              Each review is tied to a service, vehicle type, and location so customers can
+              recognize the work they are about to book.
             </p>
 
             <article className="obs-panel obs-performance-line mt-10 rounded-[1.8rem] p-7 pt-9">

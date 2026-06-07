@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site";
 import { TrackedAnchor } from "@/components/ui/tracked-anchor";
 import { TrackedLink } from "@/components/ui/tracked-link";
 
 const navItems = [
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "Services & Pricing" },
   { href: "/gallery", label: "Gallery" },
   { href: "/reviews", label: "Reviews" },
   { href: "/faq", label: "FAQ" },
@@ -16,12 +17,19 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/8 bg-obs-ink/90 backdrop-blur">
       <div className="section-shell flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="font-display text-2xl tracking-wide text-obs-fog">
-          OBS
+        <Link href="/" className="flex items-center gap-3 text-obs-fog">
+          <Image
+            src="/images/Hero/obslogo.png"
+            alt="OBS Mobile Detailing"
+            width={34}
+            height={34}
+            className="h-8 w-8 rounded-full"
+          />
+          <span className="font-display text-2xl tracking-wide">OBS</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-obs-fog/76 md:flex">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="transition hover:text-white">
+            <Link key={item.href} href={item.href} className="transition hover:text-obs-copper">
               {item.label}
             </Link>
           ))}

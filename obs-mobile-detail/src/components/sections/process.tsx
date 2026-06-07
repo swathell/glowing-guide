@@ -2,20 +2,20 @@ import { Container } from "@/components/ui/container";
 
 const steps = [
   {
-    title: "Choose the service",
-    body: "Pick a standard package or move into a quote path for specialty jobs."
+    title: "Choose the package",
+    body: "Start with Basic, Complete, Premium, or a targeted add-on based on the vehicle condition."
   },
   {
-    title: "Tell us about the vehicle",
-    body: "Vehicle type, condition, location, and any flags that affect time or scope."
+    title: "Confirm the vehicle",
+    body: "Share the vehicle type, location, condition, and any stains, odor, pet hair, or salt buildup."
   },
   {
-    title: "Book or request review",
-    body: "Standard jobs go to the calendar. Higher-complexity work stays controlled."
+    title: "OBS arrives mobile",
+    body: "We come to your home, condo, office, or business with the service plan already clear."
   },
   {
-    title: "We come to you",
-    body: "Home, office, condo parking, or business location across the GTA."
+    title: "Final walkthrough",
+    body: "You see the finished work, review any notes, and know exactly what was completed."
   }
 ];
 
@@ -28,7 +28,7 @@ export function ProcessSection() {
             <span className="obs-tag">How it works</span>
             <span className="obs-tag">Fast to book, easy to trust</span>
           </div>
-          <h2 className="section-title mt-6">A professional service flow should feel fast, clear, and easy to trust.</h2>
+          <h2 className="section-title mt-6">A simple service flow makes the work easier to trust.</h2>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {steps.map((step, index) => (

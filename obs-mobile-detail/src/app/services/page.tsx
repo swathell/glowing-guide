@@ -5,9 +5,20 @@ import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Mobile detailing, oil change services, tire services, and extras across the GTA, presented in a cleaner premium structure."
+  title: "Services & Pricing",
+  description: "Mobile detailing packages, starting prices, oil change services, tire services, and detailing add-ons across the GTA."
 };
+
+const serviceSignals = [
+  "Mobile Detailing",
+  "Interior Detailing",
+  "Exterior Detailing",
+  "Paint Protection",
+  "Oil Changes",
+  "Tire Services",
+  "Pet Hair Removal",
+  "Odor Removal"
+];
 
 export default function ServicesPage() {
   return (
@@ -17,17 +28,24 @@ export default function ServicesPage() {
         <Container>
           <div className="max-w-4xl">
             <div className="flex flex-wrap gap-3">
-              <span className="obs-tag">Services</span>
-              <span className="obs-tag">Mobile care built around condition</span>
+              <span className="obs-tag">Services & Pricing</span>
+              <span className="obs-tag">Starting prices visible upfront</span>
             </div>
             <h1 className="display-title mt-6 text-obs-fog">
-              From fast maintenance to full vehicle transformation.
+              Clear packages for the work your vehicle actually needs.
             </h1>
             <p className="copy-muted mt-6 max-w-3xl">
-              OBS is built around the work most drivers actually need: deep interior detailing,
-              sharper exterior presentation, practical maintenance, and targeted add-ons that
-              finish the job properly.
+              Compare detailing packages, maintenance services, and targeted add-ons without
+              hunting through the site. Start with the right service, then book or call for the
+              details that depend on condition.
             </p>
+            <div className="mt-7 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              {serviceSignals.map((service) => (
+                <Link key={service} href="/services" className="obs-service-chip text-sm">
+                  <span>{service}</span>
+                </Link>
+              ))}
+            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/book" className="button-primary">
                 Book A Service

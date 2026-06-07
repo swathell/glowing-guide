@@ -27,13 +27,13 @@ export function GalleryStripSection() {
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <div className="flex flex-wrap gap-3">
-              <span className="obs-tag">Proof</span>
-              <span className="obs-tag">Real transformations</span>
+            <span className="obs-tag">Real work</span>
+            <span className="obs-tag">Recent transformations</span>
             </div>
-            <h2 className="section-title mt-6">The finish has to look worth booking before anyone reads the package list.</h2>
+            <h2 className="section-title mt-6">People trust detailing when they can see the result.</h2>
             <p className="copy-muted mt-5">
-              Recent interiors, paint finishes, and full-vehicle cleanups carry the trust here.
-              The point is simple: the vehicle should look visibly better, not just freshly wiped.
+              Recent interiors, paint finishes, and full-vehicle cleanups show the difference
+              between a quick wipe and a proper mobile detail.
             </p>
           </div>
           <Link href="/gallery" className="text-sm font-semibold text-obs-sand md:inline-flex">
@@ -58,8 +58,7 @@ export function GalleryStripSection() {
                   <div>
                     <p className="font-display text-3xl text-obs-fog sm:text-4xl">{activeImage.label}</p>
                     <p className="mt-2 max-w-md text-sm text-obs-fog/78">
-                      The homepage now leads with recent proof so users see finish quality before
-                      they compare packages or decide how to reach out.
+                      Real vehicle work gives customers a reason to trust the package before they book.
                     </p>
                   </div>
                   <div className="hidden gap-2 sm:flex">
